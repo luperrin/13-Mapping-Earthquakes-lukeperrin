@@ -56,15 +56,18 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
   // Pass our map layers into our layers control and add the layers control to the map.
   L.control.layers(baseMaps).addTo(map);
 
-// Accessing the airport GeoJSON URL
-let airportData = "https://raw.githubusercontent.com/luperrin/13-Mapping-Earthquakes-lukeperrin/main/Mapping_GeoJSON_Points/static/js/majorAirports.json";
+// // Accessing the airport GeoJSON URL
+// let airportData = "https://raw.githubusercontent.com/luperrin/13-Mapping-Earthquakes-lukeperrin/main/Mapping_GeoJSON_Points/static/js/majorAirports.json";
 
-// Grabbing our GeoJSON data.
-d3.json(airportData).then(function(data) {
-  console.log(data);
-// Creating a GeoJSON layer with the retrieved data.
-L.geoJSON(data).addTo(map);
-});
+// // Grabbing our GeoJSON data.
+// d3.json(airportData).then(function(data) {
+//   console.log(data);
+//   L.geoJSON(data, {
+//     onEachFeature: function(feature, layer) {
+//       layer.bindPopup("<h3> Airport Code: " + feature.properties.faa + "</h3> <hr><h3> Airport Name: " + feature.properties.name + "</h3>");
+//   }
+    
+// });
 
 
 
@@ -87,6 +90,21 @@ L.geoJSON(sanFranAirport, {
     layer.bindPopup();
    }
 });
+
+// Accessing the airport GeoJSON URL
+let airportData = "https://raw.githubusercontent.com/luperrin/13-Mapping-Earthquakes-lukeperrin/main/Mapping_GeoJSON_Points/static/js/majorAirports.json";
+// Grabbing our GeoJSON data.
+d3.json(airportData).then(function(data) {
+  console.log(data);
+// Creating a GeoJSON layer with the retrieved data.
+L.geoJSON(data, {
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup("<h3> Airport Code: " + feature.properties.faa + "</h3> <hr><h3> Airport Name: " + feature.properties.name + "</h3>");
+  }
+})
+.addTo(map);
+});
+
 
 // Accessing the Toronto airline routes GeoJSON URL.
 let torontoData = "https://raw.githubusercontent.com/luperrin/13-Mapping-Earthquakes-lukeperrin/main/Mapping_GeoJSON_Points/static/js/torontoRoutes.json";
