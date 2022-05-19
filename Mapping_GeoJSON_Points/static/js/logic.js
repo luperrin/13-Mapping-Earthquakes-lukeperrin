@@ -56,6 +56,7 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
   // Pass our map layers into our layers control and add the layers control to the map.
   L.control.layers(baseMaps).addTo(map);
 
+
 // // Accessing the airport GeoJSON URL
 // let airportData = "https://raw.githubusercontent.com/luperrin/13-Mapping-Earthquakes-lukeperrin/main/Mapping_GeoJSON_Points/static/js/majorAirports.json";
 
